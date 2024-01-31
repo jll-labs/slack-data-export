@@ -31,7 +31,7 @@ def app():
     ignored_message_subtypes = ignored_message_subtypes_input.split(', ')
 
     st.header('Slack Channel')
-    st.write('Click on the channel name in Slack and to get the channel ID at the bottom of About page.')
+    st.write('Click on the channel name in Slack to get the channel ID at the bottom of the About page.')
     col1, col2 = st.columns(2)
     channel_name = col1.text_input('Channel name')
     channel_id = col2.text_input('Channel ID')
@@ -55,7 +55,7 @@ def app():
         st.header('Conversations history' + ('' if len(channel_name) == 0 else f' for #{channel_name}'))
 
         if st.session_state.conversations_history is None or len(st.session_state.conversations_history) == 0:
-            st.write('🟢 Click on the button below to download the conversations history.')
+            st.write('🟢 Click on the button below to start')
 
         history_button = st.button('(1) Download conversations history (json)', disabled=not st.session_state.input_fields_ready)
         if history_button:

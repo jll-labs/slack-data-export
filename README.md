@@ -4,8 +4,12 @@ An application to export the history of Slack channel conversations, including a
 
 **It works for all channels** where your app is invited <u>**including private**</u> ones (see Prerequisities).
 
+<img src="Resources/the_app.jpg" alt="The app" width="300">
 
 ## The app output
+
+<img src="Resources/results.png" alt="Results" width="300">
+<img src="Resources/word.png" alt="Slack channel transcript in Word" width="300">
 
 The app downloads and stores all conversations from a selected Slack channel including all files. When done, you can find these results in the Output folder:
 - Attachmets directory will all files
