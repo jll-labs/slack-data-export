@@ -22,9 +22,8 @@ def app():
 
     # Input fields
     st.header('Configuration')
-    st.markdown('You can find your Slack tokens [here](https://api.slack.com/apps). Go to Your app > OAuth & Permissions')
+    st.markdown('You can find your Slack token [here](https://api.slack.com/apps). Go to Your app > OAuth & Permissions')
 
-    slack_user_oauth_token = st.text_input('Slack User OAuth token')
     slack_bot_user_oauth_token = st.text_input('Slack Bot User OAuth token')
 
     default_ignored_message_subtypes = ['thread_broadcast', 'bot_add', 'bot_message', 'channel_join', 'channel_leave', 'reminder_add', 'channel_name']
@@ -45,12 +44,12 @@ def app():
     st.session_state.channel_name = channel_name
     st.session_state.channel_id = channel_id
     
-    st.session_state.input_fields_ready = len(channel_name) > 0 and len(channel_id) > 0 and len(slack_user_oauth_token) > 0 and len(slack_bot_user_oauth_token) > 0
+    st.session_state.input_fields_ready = len(channel_name) > 0 and len(channel_id) > 0 and len(slack_bot_user_oauth_token) > 0
 
     if not st.session_state.input_fields_ready:
         st.write('⚠️ Please fill in the input fields above.')
     else:
-        slack_api = SlackAPI(slack_bot_user_oauth_token, slack_user_oauth_token)
+        slack_api = SlackAPI(slack_bot_user_oauth_token)
         users = slack_api.get_users()
 
         st.header('Conversations history' + ('' if len(channel_name) == 0 else f' for #{channel_name}'))

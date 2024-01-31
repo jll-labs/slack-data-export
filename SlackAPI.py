@@ -3,14 +3,13 @@ from downloader import download, download_file
 import streamlit as st
 
 class SlackAPI:
-    def __init__(self, slack_bot_user_oauth_token: str, slack_user_oauth_token: str):
+    def __init__(self, slack_bot_user_oauth_token: str):
         self.slack_bot_user_oauth_token = slack_bot_user_oauth_token
-        self.slack_user_oauth_token = slack_user_oauth_token
 
     def get_users(self) -> list[str, User]:
         users_list = download(
             url='https://slack.com/api/users.list', 
-            token=self.slack_user_oauth_token, 
+            token=self.slack_bot_user_oauth_token, 
             content_key='members',
             progress_label='Downloading all workspace users...'
         )

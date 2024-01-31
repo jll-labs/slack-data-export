@@ -12,7 +12,7 @@ The app downloads and stores all conversations from a selected Slack channel inc
 - raw_conversation_history.json (all conversations in raw format)
 - slack-export.docx (pretty printed conversations with inlined image files)
 
-## Prerequisities
+## Prerequisites
 
 As information included in various channels can be highly sensitive it's recommended not to share one Slack app to access all channels, rather create a Slack app per team.
 
@@ -29,6 +29,7 @@ When you create your own app you have under control who has access to it (and al
    3. im:history
    4. mpim:history
    5. users:read
+   6. files:read
 5. Scroll up to OAuth Tokens for Your Workspace and "Request to Install"
 6. Submit your request
 7. Wait for the approval (you will be notified directly in Slack)
