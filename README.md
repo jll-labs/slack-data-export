@@ -41,13 +41,10 @@ The app uses Streamlit library. At first, you need to install all the required t
 ### Install tooling
 
 1. Install Homebrew, in Terminal: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-2. Install Python, in Terminal: `brew install python`
-1. Update path, in Terminal: `export PATH="$HOME/Library/Python/3.9/bin:$PATH"`
-3. Install pip (package installer), in Terminal:
-   1.  `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
-   2.  `python3 get-pip.py`
-5. Install dependencies, in Terminal: `pip install streamlit python-docx`
-6. Now you can start the app
+1. Install Python, in Terminal: `brew install python`
+1. Update path, in Terminal (zsh): `(echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/corrigomobile/.zprofile`
+1. Install dependencies, in Terminal: `pip3 install streamlit python-docx` (maybe you will need to update pip `/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip`)
+1. Now you can start the app
 
 ### Run the app
 
