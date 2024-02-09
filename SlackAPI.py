@@ -28,6 +28,10 @@ class SlackAPI:
         )
         
         total_count = len(channel_history)
+        
+        if total_count == 0:
+            return []
+        
         channel_history_with_replies = []
         download_progress_bar = st.progress(0/total_count, text=f'Downloading replies for 1/{total_count}')
         for idx in range(0,len(channel_history)-1, 1):
