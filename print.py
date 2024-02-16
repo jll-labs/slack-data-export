@@ -69,7 +69,12 @@ def print_message(message, users: list[str, User], indentation: bool, doc: Docum
                         height = max_height
                         width = height * aspect_ratio
 
-                    files_paragraph.add_run().add_picture(BytesIO(file_data), width=Pt(width), height=Pt(height))
+                    print(f'Adding image to document {file["id"]}')
+                    try :
+                        files_paragraph.add_run().add_picture(BytesIO(file_data), width=Pt(width), height=Pt(height))
+                    except:
+                        print(f'Error adding image to document {file["id"]}')
+                    
 
 def print_conversation_replies(data, users: list[str, User], doc: Document, slack_api: SlackAPI):
 
