@@ -60,4 +60,7 @@ class SlackAPI:
         )
 
     def get_file(self, file):
+        if "url_private_download" not in file:
+            print(f'File does not contain url for download. File: {file}')
+            return None
         return download_file(file["url_private_download"], self.slack_bot_user_oauth_token)

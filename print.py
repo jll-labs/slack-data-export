@@ -47,6 +47,9 @@ def print_message(message, users: list[str, User], indentation: bool, doc: Docum
         files_run.italic = True
 
         for file in message['files']:
+            if "name" not in file:
+                continue
+            
             files_paragraph.add_run(f'{file["name"]} ({file["id"]})\n')
 
             file_data = slack_api.get_file(file) # this call will use cache because all files were already downloaded
