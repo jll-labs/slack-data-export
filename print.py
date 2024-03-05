@@ -5,6 +5,7 @@ from User import User
 from datetime import datetime
 import re
 from SlackAPI import SlackAPI
+from PIL import Image
 
 def replace_user_ids_with_names(input_string, users: list[str, User]):
     # Define a regular expression pattern to match <@user_id>
@@ -55,8 +56,17 @@ def print_message(message, users: list[str, User], indentation: bool, doc: Docum
             file_data = slack_api.get_file(file) # this call will use cache because all files were already downloaded
             if file_data:
                 if file["mimetype"].startswith("image"):
-                    width = file["original_w"]
-                    height = file["original_h"]
+                    image_data = BytesIO(file_data)
+
+                    width, height = 0, 0
+
+                    if "original_w" not in file or "original_h" not in file:
+                        image = Image.open(image_data)
+                        width, height = image.size
+                    else:
+                        width = file["original_w"]
+                        height = file["original_h"]
+
                     aspect_ratio = width / height
 
                     # Calculate the corresponding width to fit the maximum height
@@ -74,7 +84,7 @@ def print_message(message, users: list[str, User], indentation: bool, doc: Docum
 
                     print(f'Adding image to document {file["id"]}')
                     try :
-                        files_paragraph.add_run().add_picture(BytesIO(file_data), width=Pt(width), height=Pt(height))
+                        files_paragraph.add_run().add_picture(image_data, width=Pt(width), height=Pt(height))
                     except:
                         print(f'Error adding image to document {file["id"]}')
                     
